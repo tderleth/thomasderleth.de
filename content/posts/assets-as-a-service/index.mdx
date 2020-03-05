@@ -1,0 +1,142 @@
+---
+title: "Assets as a service"
+description: "A service oriented approach to manage and maintain corporate design components."
+date: 2017-05-29
+tags:
+    - Masterthesis
+    - frontend architecture
+---
+
+## Preamble
+
+Cascading Style Sheets (henceforth, CSS), an interesting area of study, have left much room for future research. CSS is the standard language used for defining the look and feel of structured documents, for instance HTML and XML documents[^Mazinanian, D., & Tsantalis, N. (2016). An Empirical Study on the Use of CSS Preprocessors (pp. 168–178). Presented at the 2016 IEEE 23rd International Conference on Software Analysis, Evolution and Reengineering (SANER), IEEE. http://doi.org/10.1109/SANER.2016.18]. In the shorter past CSS started “being adopted in the design of desktop applications […], as well as mobile applications […], extending its use in a wide spectrum of application domains”[^Mazinanian, D., & Tsantalis, N. (2016). An Empirical Study on the Use of CSS Preprocessors (pp. 168–178). Presented at the 2016 IEEE 23rd International Conference on Software Analysis, Evolution and Reengineering (SANER), IEEE. http://doi.org/10.1109/SANER.2016.18]. This fact underlines the impact of web technologies on today's software development processes, tools and languages. The upcoming popularity of frameworks like Githubs *Electron*[^ https://electron.atom.io/], which enables us to write cross-platform desktop applications using Javascript (henceforth, JS), Hypertext Markup Language (henceforth, HTML) and CSS, confirms this thesis. JS itself has clearly found its way on the desktop as well.
+
+Covering different application domains, considerations arise as how to reuse client-side components in order to ensure the DRY principle. These considerations are the backbone of this thesis and let me think about applying the SOA (service-oriented architecture) paradigm to front-end assets and components.
+
+In practice, many teams develop applications for different platforms and each application serves a slightly different purpose but all do share a common corporate design, including but not limited to guidelines on logotype, layout, iconography, typography, coloring, interaction elements, headings, links, lists, media objects, tables and more. Therefore a subset of the front-end assets and components is derived from the companies corporate design and reused cross-applicational. This subset includes:
+
+- CSS
+- Web Components
+- Images
+- Fonts
+- Miscellaneous assets
+
+## Status quo, deficits
+
+Currently, many teams tend to duplicate this subset within each application. What are the disadvantages of this approach?
+
+1. It does not lead to design consistency, which shall be proved by analysing high-frequency web services and popular platforms. Duplicated information is managed decentrally by its nature and irregularities arise due to the lack of matching duplicates.
+
+2. This thesis claims that decentralised asset management harms the software development process as well as the collaboration between designers and developers. Therefore a practical research will take place to analyse the industries workflow from application conception to deployment. This analysis is intended to reveal potential weaknesses in the current process.
+
+3. A third disadvantage is the lack of agility. Illustrated with a simple example: Think about a company that wants to change their brand color. Where do they need to touch code? A central place, many places? How quickly would changes be enrolled in various applications? Who can make these changes, a designer or a developer? Let's look at this in detail, starting with CSS.
+
+### CSS
+
+By inventing CSS processors the industry added programming features such as variables and functions to the styling language. The processor´s compiler transforms functions and variables to regular CSS[^Mazinanian, D., & Tsantalis, N. (2016). An Empirical Study on the Use of CSS Preprocessors (pp. 168–178). Presented at the 2016 IEEE 23rd International Conference on Software Analysis, Evolution and Reengineering (SANER), IEEE. http://doi.org/10.1109/SANER.2016.18]. Including inheritance and extensibility these features enable us to build resilient and furthermore reusable styling codebases.
+
+A short section of the work shall cover the comparison of different processors in order to utilise them for a reusable approach. Therefore it is necessary to establish common criteria by which these different languages will be evaluated. The criteria can serve as point of view for some economic and technical key factors:
+
+1. Functionality & expandability
+2. Performance of transformation
+3. Learning curve & usability
+
+The CSS Working group reacted on these features by releasing drafts which will bring very similar features to the native [CSS language](https://www.w3.org/TR/#tr_CSS).
+
+On top of this language extensions, different methodologies have evolved to design the architecture of CSS for complex applications by creating abstractions in CSS [^Aalto-yliopisto, Aalto University, Kitlei, R., korkeakoulu, P., & Saikkonen, H. (n.d.). Extending the Cascading Style Sheets (CSS) Language with Programming Constructs. aaltodoc.aalto.fi]. These methodologies give you advice on how to structure CSS and they need to be evaluated by various criteria as well:
+
+1. Maintainability & scalability
+3. Readable and transparent code
+2. Scope
+
+By adding these techniques and methodologies to CSS the scaffold for providing CSS services is created. What is meant by *CSS services*? CSS now provides a global variable scope, functions, inheritance and expandability. These features can be used to  provide *CSS as a service*. This approach will define one centralised place for basic styling and CSS functionality, wrapped in a global scope and spiced in each application via a package manager. Think of it as a Mixin Library provided to several applications, containing corporate specific functionalities.
+
+### Web Components
+
+Today's web applications consist of components rather than actual pages. The adoption of modern frameworks like AngularJS or ReactJS underlines the significance of component driven design. Compare a website from nowadays to a Lego house, each single site consists of components composed to a greater building. Modern template engines even enable us to use features like inheritance for components as well. 
+
+Nevertheless “web application development lacks simple reuse of client-side components”[^Krug, M., & Gaedke, M. (2015). SmartComposition (pp. 1–4). Presented at the the 17th International Conference, New York, New York, USA: ACM Press. http://doi.org/10.1145/2837185.2837247], especially when it comes to company specific components. While developers are able to use programming patterns within one application, there are few standardized ways to share components across applications and frameworks.
+
+One of the biggest criticisms of current CSS technologies is the global scope. CSS is always applied to the entire document. This fact resulted in encapsulated CSS tools such as [css-modules](https://github.com/css-modules/css-modules), which originated from the React community. There is an ongoing debate whether CSS should be written in JS, which is then bound inline to the element. This approach raises some advantages and disadvantages which shall be discussed in this work as well. Besides this approach Web Components are a game changer on the subject of avoiding global scoping. What are Web Components?
+
+"Web Components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build on the Web Component standards, will work across modern browsers, and can be used with any JS library or framework that works with HTML" [^ https://www.webcomponents.org/introduction]. In the developer community this movement towards custom elements is called the "*declarative renaissance*". This work will outline a comparison of declarative versus imperative component implementation. Why does this matter for front-end asset management? This technique allows distribution to multiple applications by storing corporate-specific custom elements in a single repository. Within the applications we are able to easily compose pre-made elements so we can focus on the logic in our apps. Web Components seem to be the perfect format to this approach which is argued by various properties of Web Components:
+
+- Web Components are developed by the W3C and therefore a standard technique, which makes them technology- and framework-independent.
+- Size and behaviour of one component can be declared manually and decoupled.
+- Relationships between markup and behaviour can be read from the HTML. 
+
+### Images and fonts
+Duplicated images within different applications can produce different versions of files. By introducing content delivery networks (henceforth, CDN) a central place for storing and delivering images was created. This technique is based on the client requesting files from the CDN, which has many advantages that should not be discussed in detail in this work. However, this approach also supports the central management of an images subset for cross-application reuse. 
+
+Currently there are some ways of delivering web font files to clients. In general it can be divided into "same domain" and "cross-domain font requests”. In any case, this approach recommends a central repository to store fonts independently of the distribution system.
+
+## Methodology & preamble
+
+Contrary to the previous approaches, the planned work tries to put cross-applicational, reusable and independent asset objects into the game. These objects shall be maintained and delivered from a central corporate repository. What are the advantages?
+
+1. By storing these assets in a central repository design consistency is enhanced.
+
+2. By introducing version control of front-end assets, we are able to pull different versions into different applications, gaining loose coupling between assets and applications.
+
+3. By storing front-end assets centralised, we create a global definition where assets have to live. Furthermore complexity and implementation is hidden behind a facade. Clients only have to know which components they get provided.
+
+4. As a further side effect of version control in front-end assets we introduce a backup mechanism.
+
+### CCL (Corporate Component Libraries)
+
+Corporate Component Libraries (henceforth, CCL) is a theoretical approach on organising and maintaining front-end assets and components by grouping them on one corporate. In this work, the author attempts to sketch a technology- and framework-independent architecture to provide assets to multiple front-ends. The main objectives of the CCL approach are as follows:
+
+- Long lasting code of corporate components and styles
+- Organisation and maintainability of components
+- Reusable and decoupled code
+- Convention over configuration by introducing standards
+- Single responsibility & separation of concerns
+- Encapsulation of components
+
+### Use case and premise
+
+In general, the theory outlined in this work aims at teams that are developing multiple applications that share the same design guidelines. However, the CCL approach is particularly interesting for cross-functional teams, where UI experts are divided into several teams, and in general, companies that follow a microservice-based architecture. “Rather than use a set of defined standards written down somewhere on paper they prefer the idea of producing useful tools that other developers can use to solve similar problems to the ones they are facing” [^ https://martinfowler.com/articles/microservices.html]. Consider CCL as a useful methodology to provide front-end assets company wide.
+
+
+## Research question
+Primary and secondary research questions.
+
+### Primary research question
+Does applying a SOA paradigm approach to front-end assets & components enhance design consistency, development speed and the collaboration between designers and developers?
+
+### Secondary research questions
+
+The theoretical approach raises some secondary research questions. 
+
+- First there is the impact of this architecture on current state of the art front-end frameworks. Is framework independence really guaranteed? What dependencies arise from this approach?
+- In addition, the influence of these changes on the browser performance has to be questioned, especially in terms of load and performance. How is the impact on the CSS footprint?
+- Another question that needs to be considered is a suitable distribution channel. Can we rely on modern package managers like [npm](https://www.npmjs.com) or [bower](https://bower.io/)? Are these assets distributed once to a client application or requested and processed by browser clients?
+- Using which method can a general subset be identified? Is it possible to define a general subset at all? What components are part of this subset and should they also be put together to offer widgets?
+
+
+## Evaluation
+As a matter of fact, the theories and implementations outlined in this thesis can only be evaluated in practice. Nevertheless, a qualitative survey with experts is used to assess the results in detail. In order to determine the need for such an approach, a quantitative survey is carried out. This survey is intended to reflect an atmospheric picture in the development community as well as to identify the current state of art.
+
+
+## Risks of work
+
+The approach for the planned work entails the following risks:
+
+- Although the author has conducted literary checks, it is possible that a similar approach has already been mentioned or used in practice or science.
+- Parts of the theory may prove to be not performant and / or not applicable in practice.
+- Because web development has very short innovation cycles new theories and concepts can make this approach unserviceable.
+- The scope of the work and thus the associated workload could turn out to be too large for a six-month period.
+
+Although some risks can not be mitigated, others can be rejected with the following actions.
+
+- Through intensive literature research, particularly at the beginning, possible overlaps with previous theses can be distinguished by clear characteristics. In the same way, the subject matter can also be narrowed down and thus counteracted to an excessive extent.
+- To mitigate the risk of being not applicable, the quantitative survey will take place in the first third of the time.
+- By keeping the approach general, one tries to achieve technology independence.
+
+
+## Further purpose of use
+In addition to my academic title and practical application of the results in the industry, I plan to publish my results and, if welcomed, to present them at conferences or in magazines.
+
+## TL;DR
+
+In practice, teams often build several applications that share the same styles, micro-interactions and elements across multiple code bases. Maintaining these things is becoming increasingly difficult with time. This work shall discuss a theoretical approach to utilise a service-oriented architecture approach for writing HTML and CSS by keeping the code modular. Therefore the author tries to find answers to the following questions: How to best structure and write front-end code for maintainability and reuse? How to package these styles to be used within different environments and different frameworks?
