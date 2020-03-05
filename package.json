@@ -9,6 +9,7 @@
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
     "build": "gatsby build",
     "clean": "gatsby clean",
+    "deploy":"npm run clean && npm run build",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
