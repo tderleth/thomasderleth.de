@@ -4,7 +4,14 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    author: `@tderleth`,
+    siteDescription: `Hello, I'm Thomas Derleth. I like to read, hear, talk, think and write about code as well as life and how to improve it.`,
+    siteHeadline: `Thomas Derleth`,
+    siteImage: `/banner.jpg`,
+    siteLanguage: `en`,
+    siteTitle: `Thomas Derleth`,
+    siteTitleAlt: `thomas derleth`,
+    siteUrl: `https://thomasderleth.de`,
   },
   plugins: [
     {
@@ -23,31 +30,35 @@ module.exports = {
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            url: `https://twitter.com/GtzBer`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `GitHub`,
+            url: `https://github.com/tderleth`,
           },
+          {
+            name: `LinkedIn`,
+            url: `https://www.linkedin.com/in/thomasderleth`,
+          },          
         ],
       },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        trackingId: 66897931,
       },
     },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `thomasderleth.de`,
+        short_name: `thomasderleth.de`,
+        description: `Hello, I'm Thomas Derleth. I like to read, hear, talk, think and write about code as well as life and how to improve it`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#6B46C1`,
+        theme_color: `#2ecc71`,
         display: `standalone`,
         icons: [
           {
@@ -65,6 +76,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
-    // `gatsby-plugin-webpack-bundle-analyser-v2`,
+    `gatsby-plugin-theme-ui`,
   ],
 }
