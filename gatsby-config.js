@@ -10,7 +10,7 @@ module.exports = {
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
     siteTitle: `Thomas Derleth`,
-    siteTitleAlt: `thomas derleth`,
+    siteTitleAlt: `thomas derleth | software engineer`,
     siteUrl: `https://thomasderleth.de`,
   },
   plugins: [
