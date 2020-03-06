@@ -28,10 +28,10 @@ module.exports = {
           },
         ],
         externalLinks: [
-          {
-            name: `Twitter`,
-            url: `https://twitter.com/GtzBer`,
-          },
+          // {
+          //   name: `CV`,
+          //   url: `./files/curriculum-vitae.pdf`,
+          // },
           {
             name: `GitHub`,
             url: `https://github.com/tderleth`,
@@ -40,13 +40,17 @@ module.exports = {
             name: `LinkedIn`,
             url: `https://www.linkedin.com/in/thomasderleth`,
           },          
+          {
+            name: `Twitter`,
+            url: `https://twitter.com/GtzBer`,
+          },
         ],
       },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 66897931,
+        trackingId: 'UA-66897931-1',
       },
     },
     `gatsby-plugin-sitemap`,
