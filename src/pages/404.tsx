@@ -6,6 +6,7 @@ import useMinimalBlogConfig from "../../node_modules/@lekoarts/gatsby-theme-mini
 
 const NotFound = () => {
     const { basePath, blogPath } = useMinimalBlogConfig()
+    const url = typeof window !== 'undefined' ? window.location.href : '';
 
     return (
     <Layout>
@@ -14,7 +15,7 @@ const NotFound = () => {
             <span sx={{ color: tailwind.colors.gray[5] }} >That's an error.</span>
             <div sx={{ marginTop: '20px' }}> 
                 The requested URL 
-                <span sx={{ color: tailwind.colors.gray[5]}}> {window.location.href} </span> 
+                <span sx={{ color: tailwind.colors.gray[5]}}> {url} </span> 
                 was not found on this server. </div>
             <div sx={{ color: tailwind.colors.gray[5]}}> That's all I know.</div>            
         </section>
