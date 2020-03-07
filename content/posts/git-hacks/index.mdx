@@ -1,0 +1,74 @@
+---
+title: 'Git gems'
+description: 'Git is more than just simple version control. Here are a few small tricks on how you can use your version control even better!'
+date: 2016-05-16
+tags:
+  - Git
+  - version control system
+---
+
+Git is more than just simple version control. Here are a few small tricks on how you can use your version control even better!
+
+##### 1. Step through each change!
+
+```noLineNumbers
+git add -p
+```
+
+Already wrote multiple changes to the same file, but only wanted to commit one of the changes? Use [this](https://git-scm.com/docs/git-add#Documentation/git-add.txt---patch) command to go through your changes (step by step) and decide which of your changes you want to commit and which you don't.
+
+##### 2. Your last five commits as a one-liner
+
+```noLineNumbers
+git log -5 --pretty --oneline
+```
+
+Look at your last five commits each in a row.
+
+##### 3. How many contributors, how many commits?
+
+```noLineNumbers
+git shortlog -sn
+```
+
+Returns a list of contributors with the number of their commits to the current repository.
+
+##### 4. Branch States
+
+```noLineNumbers
+git log --all --graph --decorate --oneline --simplify-by-decoration
+```
+
+Returns you a complete status across all your branches. Since this command is difficult to remember, simply assign an `alias` in your `~/.gitconfig`.
+
+##### 5. How many lines of code did you write today?
+
+```noLineNumbers
+git diff --shortstat "@{0 day ago}"
+```
+
+Shows you the number of files, insertions and deletions that you made today.
+
+##### 6. Jump to your last branch
+
+```noLineNumbers
+git checkout -
+```
+
+As the headline says, you jump to your last branch without specifying its name.
+
+##### 7. "Uncommit" your code
+
+```noLineNumbers
+git reset --soft HEAD~{amount_of_commits}
+```
+
+Will keep your changes but _uncommit_ your last `{amount_of_commits}` commits.
+
+##### 8. Auto-correct your git commands
+
+```noLineNumbers
+git config --global help.autocorrect -1
+```
+
+This is for all quick typers who like to write `git satus` instead of `git status`.
