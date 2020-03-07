@@ -1,19 +1,19 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import Layout from "../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout"
-import SEO from "../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/seo"
+import { jsx, Styled } from 'theme-ui';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
+import SEO from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/seo';
 
 type PageProps = {
   data: {
     page: {
-      title: string
-      slug: string
-      excerpt: string
-      body: string
-    }
-  }
-}
+      title: string;
+      slug: string;
+      excerpt: string;
+      body: string;
+    };
+  };
+};
 
 const Page = ({ data: { page } }: PageProps) => (
   <Layout>
@@ -23,6 +23,6 @@ const Page = ({ data: { page } }: PageProps) => (
       <MDXRenderer>{page.body}</MDXRenderer>
     </section>
   </Layout>
-)
+);
 
-export default Page
+export default Page;
