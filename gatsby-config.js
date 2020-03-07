@@ -28,10 +28,10 @@ module.exports = {
           },
         ],
         externalLinks: [
-          // {
-          //   name: `CV`,
-          //   url: `./files/curriculum-vitae.pdf`,
-          // },
+          {
+            name: `CV`,
+            url: `/files/curriculum-vitae.pdf`,
+          },
           {
             name: `GitHub`,
             url: `https://github.com/tderleth`,
