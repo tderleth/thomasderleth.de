@@ -6,14 +6,16 @@
   "author": "tderleth <thomas.derleth@me.com>",
   "license": "MIT",
   "scripts": {
-    "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "deploy":"npm run clean && npm run build",
-    "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
+    "deploy": "npm run test &&  npm run clean && npm run build",
     "develop": "gatsby develop",
+    "fix": "npm run lint -- --fix",
+    "format": "prettier --write '**/*.{css,html,js,jsx,json,md,ts,tsx}'",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "serve": "gatsby serve",
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "test": "npm run lint"
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^2.2.0",
@@ -30,7 +32,20 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
     "cross-env": "^5.2.0",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
+    "husky": "^4.2.3",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.8.3"
   }
 }
