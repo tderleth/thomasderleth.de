@@ -43,7 +43,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "typescript": "^3.8.3"
