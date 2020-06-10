@@ -42,7 +42,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "gatsby-plugin-eslint": "^2.0.8",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.10",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
