@@ -1,16 +1,16 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
 import { Link } from 'gatsby';
+import { jsx } from 'theme-ui';
 import Layout from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
-// @ts-ignore
-import Hero from '../texts/hero';
-// @ts-ignore
-import Bottom from '../texts/bottom';
-import Title from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/title';
-import Listing from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/listing';
 import List from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/list';
+import Listing from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/listing';
+import Title from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/title';
 import useMinimalBlogConfig from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config';
 import replaceSlashes from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/utils/replaceSlashes';
+// @ts-ignore
+import Bottom from '../texts/bottom';
+// @ts-ignore
+import Hero from '../texts/hero';
 
 type PostsProps = {
   posts: {

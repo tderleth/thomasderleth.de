@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { jsx, Styled } from 'theme-ui';
 import Layout from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
 import SEO from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/seo';
 

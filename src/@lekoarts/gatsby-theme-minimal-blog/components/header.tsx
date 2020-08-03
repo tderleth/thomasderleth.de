@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, useColorMode, Styled } from 'theme-ui';
-import { Link } from 'gatsby';
 import { Flex } from '@theme-ui/components';
-import useSiteMetadata from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata';
-import useMinimalBlogConfig from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config';
+import { Link } from 'gatsby';
+import { jsx, Styled, useColorMode } from 'theme-ui';
 import ColorModeToggle from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/colormode-toggle';
 import Navigation from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/navigation';
+import useMinimalBlogConfig from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config';
+import useSiteMetadata from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata';
 import replaceSlashes from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/utils/replaceSlashes';
 
 const Header = () => {
@@ -46,7 +46,7 @@ const Header = () => {
         <Navigation nav={nav} />
         {externalLinks && externalLinks.length > 0 && (
           <div sx={{ 'a:not(:first-of-type)': { ml: 3 }, fontSize: [1, '18px'] }}>
-            {externalLinks.map(link => (
+            {externalLinks.map((link) => (
               <Styled.a key={link.url} href={link.url}>
                 {link.name}
               </Styled.a>

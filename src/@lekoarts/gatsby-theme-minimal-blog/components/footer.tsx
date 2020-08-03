@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui';
 import { Link } from 'gatsby';
+import { jsx, Styled } from 'theme-ui';
 import useSiteMetadata from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata';
 
 const Footer = () => {
