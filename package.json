@@ -10,6 +10,7 @@
     "clean": "gatsby clean",
     "deploy": "npm run test &&  npm run clean && npm run build",
     "develop": "gatsby develop",
+    "eslint:github-action": "eslint src/",
     "fix": "npm run lint -- --fix",
     "format": "prettier --write '**/*.{css,html,js,jsx,json,md,ts,tsx}'",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
@@ -46,6 +47,6 @@
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   }
 }
