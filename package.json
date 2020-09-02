@@ -10,6 +10,7 @@
     "clean": "gatsby clean",
     "deploy": "npm run test &&  npm run clean && npm run build",
     "develop": "gatsby develop",
+    "eslint:github-action": "eslint src/",
     "fix": "npm run lint -- --fix",
     "format": "prettier --write '**/*.{css,html,js,jsx,json,md,ts,tsx}'",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
