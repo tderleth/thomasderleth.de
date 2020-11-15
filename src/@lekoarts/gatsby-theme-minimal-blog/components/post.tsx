@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
-import Layout from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
+import { jsx, Styled } from 'theme-ui';
 import ItemTags from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/item-tags';
+import Layout from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
 import SEO from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/seo';
 
 type PostProps = {
@@ -32,7 +32,7 @@ type PostProps = {
 };
 
 const px = ['32px', '16px', '8px', '4px'];
-const shadow = px.map(v => `rgba(0, 0, 0, 0.15) 0px ${v} ${v} 0px`);
+const shadow = px.map((v) => `rgba(0, 0, 0, 0.15) 0px ${v} ${v} 0px`);
 
 const Post = ({ data: { post } }: PostProps) => (
   <Layout>

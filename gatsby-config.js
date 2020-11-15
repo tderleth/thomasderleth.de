@@ -80,7 +80,6 @@ module.exports = {
         theme_color: '#2ecc71',
       },
     },
-    'gatsby-plugin-eslint',
     'gatsby-plugin-netlify',
     'gatsby-plugin-offline',
     'gatsby-plugin-theme-ui',
