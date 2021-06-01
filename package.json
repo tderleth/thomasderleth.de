@@ -21,7 +21,7 @@
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "2.2.0",
     "@theme-ui/color": "^0.6.1",
-    "@theme-ui/presets": "^0.6.1",
+    "@theme-ui/presets": "^0.9.1",
     "@types/theme-ui": "^0.3.7",
     "gatsby": "^2.32.12",
     "gatsby-cli": "^3.4.0",
