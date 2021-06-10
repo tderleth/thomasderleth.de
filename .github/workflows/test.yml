@@ -1,22 +1,41 @@
 on: push
 jobs:
-  lint:
+  test:
     name: Run ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      # Checkout
+      - name: ⏬ Checkout
+        uses: actions/checkout@v2
+
+      # Installation and Setup
+      - name: ✂️ Extract node version
+        id: nvm
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      - name: ⚙️ Setup Node
+        uses: actions/setup-node@v2
         with:
-          node-version: '12'
-      - run: npm install
-      - run: npm run lint
-  build:
-    name: Run Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+      - name: 🔁 Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          node-version: '12'
-      - run: npm install
-      - run: npm run build
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: 🔋 Install
+        run: npm -s ci
+
+      - name: 🤖 Linting
+        run: npm run lint
+
+      - name: 👨‍🔧 Building
+        run: npm run build
+
+      - name: 🧪 Testing
+        run: npm test

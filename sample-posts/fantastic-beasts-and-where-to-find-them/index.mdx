@@ -146,13 +146,13 @@ const Blog = ({ posts }: PostsProps) => {
         <Heading variant="h2" as="h2">
           Blog
         </Heading>
-        <Styled.a
+        <Themed.a
           as={Link}
           sx={{ variant: `links.secondary` }}
           to={`/${basePath}/${tagsPath}`.replace(/\/\/+/g, `/`)}
         >
           View all tags
-        </Styled.a>
+        </Themed.a>
       </Flex>
       <Listing posts={posts} sx={{ mt: [4, 5] }} />
     </Layout>

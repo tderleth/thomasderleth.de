@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Link } from 'gatsby';
-import { jsx, Styled } from 'theme-ui';
+import { jsx, Themed } from 'theme-ui';
 import useSiteMetadata from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata';
 
 const Footer = () => {
@@ -9,15 +9,13 @@ const Footer = () => {
   return (
     <footer
       sx={{
+        a: { variant: 'links.secondary' },
         boxSizing: 'border-box',
+        color: 'secondary',
         display: 'flex',
+        flexDirection: ['column', 'column', 'row'],
         justifyContent: 'space-between',
         mt: [6],
-        color: 'secondary',
-        a: {
-          variant: 'links.secondary',
-        },
-        flexDirection: ['column', 'column', 'row'],
         variant: 'dividers.top',
       }}
     >
@@ -26,7 +24,7 @@ const Footer = () => {
       </div>
       <div>
         <Link to="/imprint">
-          <Styled.a>Imprint</Styled.a>
+          <Themed.a>Imprint</Themed.a>
         </Link>
       </div>
     </footer>
