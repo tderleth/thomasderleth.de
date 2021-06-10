@@ -12,7 +12,7 @@
     "eslint:github-action": "eslint src/",
     "fix": "npm run lint -- --fix",
     "format": "prettier --write '**/*.{css,html,js,jsx,json,md,ts,tsx}'",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint",
     "serve": "gatsby serve",
     "start": "gatsby develop",
     "test": "npm run lint"
@@ -40,6 +40,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-mdx": "^1.13.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby-plugin-eslint": "^3.0.0",
