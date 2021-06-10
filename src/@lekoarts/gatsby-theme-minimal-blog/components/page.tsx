@@ -1,8 +1,8 @@
 /** @jsx jsx */
+import { jsx, Heading } from 'theme-ui';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { jsx, Styled } from 'theme-ui';
-import Layout from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
-import SEO from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/seo';
+import Layout from '@lekoarts/gatsby-theme-minimal-blog/src/components/layout';
+import Seo from '@lekoarts/gatsby-theme-minimal-blog/src/components/seo';
 
 type PageProps = {
   data: {
@@ -13,13 +13,16 @@ type PageProps = {
       body: string;
     };
   };
+  [key: string]: any;
 };
 
 const Page = ({ data: { page } }: PageProps) => (
   <Layout>
-    <SEO title={page.title} description={page.excerpt} />
-    <Styled.h2>{page.title}</Styled.h2>
-    <section sx={{ my: 5 }}>
+    <Seo title={page.title} description={page.excerpt} />
+    <Heading as="h1" variant="styles.h1">
+      {page.title}
+    </Heading>
+    <section sx={{ my: 5, variant: `layout.content` }}>
       <MDXRenderer>{page.body}</MDXRenderer>
     </section>
   </Layout>
