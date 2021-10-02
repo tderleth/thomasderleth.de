@@ -24,7 +24,7 @@
     "@types/theme-ui": "^0.3.7",
     "gatsby": "^3.14.1",
     "gatsby-cli": "^3.14.0",
-    "gatsby-plugin-google-analytics": "^3.13.0",
+    "gatsby-plugin-google-analytics": "^3.14.0",
     "gatsby-plugin-manifest": "^3.14.0",
     "gatsby-plugin-netlify": "^3.14.0",
     "gatsby-plugin-offline": "^4.14.0",
