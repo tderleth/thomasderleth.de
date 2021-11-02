@@ -22,8 +22,8 @@
     "@theme-ui/color": "^0.11.3",
     "@theme-ui/presets": "^0.11.3",
     "@types/theme-ui": "^0.3.7",
-    "gatsby": "^3.14.1",
-    "gatsby-cli": "^3.14.0",
+    "gatsby": "^3.14.5",
+    "gatsby-cli": "^3.14.2",
     "gatsby-plugin-google-analytics": "^3.14.0",
     "gatsby-plugin-manifest": "^3.14.0",
     "gatsby-plugin-netlify": "^3.14.0",
@@ -33,20 +33,20 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
-    "@typescript-eslint/parser": "^4.32.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-mdx": "^1.15.1",
+    "eslint-plugin-mdx": "^1.16.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "gatsby-plugin-eslint": "^4.0.0",
-    "husky": "^7.0.2",
+    "gatsby-plugin-eslint": "^4.0.1",
+    "husky": "^7.0.4",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4"
   }
 }
