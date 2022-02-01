@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1",
+    "@typescript-eslint/parser": "^5.10.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.2",
