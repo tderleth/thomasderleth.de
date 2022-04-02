@@ -23,7 +23,7 @@
     "@theme-ui/presets": "^0.13.1",
     "@types/theme-ui": "^0.3.7",
     "gatsby": "^4.9.0",
-    "gatsby-cli": "^4.9.0",
+    "gatsby-cli": "^4.11.1",
     "gatsby-plugin-google-analytics": "^4.9.0",
     "gatsby-plugin-manifest": "^4.9.0",
     "gatsby-plugin-netlify": "^4.1.0",
