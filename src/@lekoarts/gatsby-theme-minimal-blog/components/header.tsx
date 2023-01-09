@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { Flex } from '@theme-ui/components';
 import { jsx, useColorMode } from 'theme-ui';
-import Navigation from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/navigation';
-import useMinimalBlogConfig from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config';
-import HeaderTitle from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/header-title';
-import HeaderExternalLinks from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/header-external-links';
-import ColorModeToggle from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/components/colormode-toggle';
+import Navigation from '@lekoarts/gatsby-theme-minimal-blog/src/components/navigation';
+import useMinimalBlogConfig from '@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config';
+import HeaderTitle from '@lekoarts/gatsby-theme-minimal-blog/src/components/header-title';
+import HeaderExternalLinks from '@lekoarts/gatsby-theme-minimal-blog/src/components/header-external-links';
+import ColorModeToggle from '@lekoarts/gatsby-theme-minimal-blog/src/components/colormode-toggle';
 
 const Header = () => {
   const { navigation: nav } = useMinimalBlogConfig();

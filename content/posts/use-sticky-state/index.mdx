@@ -10,7 +10,7 @@ Nowadays, I use React function components and the hooks API a lot. One common us
 
 This is where the localStorage comes in that lets us store some React state and re-hydrate it into our application on page load. To avoid repeating ourselves with localStorage code, we can create a custom hook that lets us use localStorage as a React state store. The respective interface should look the same as a regular react  `useState` hook, a tuple of the current state, and a dispatch function that lets us update the state.
 
-```tsx
+```tsx withLineNumbers
 import { Dispatch, SetStateAction } from 'react';
 
 type PersistedState<T> = [T, Dispatch<SetStateAction<T>>];
@@ -20,7 +20,7 @@ export { PersistedState };
 
 Inside our custom hook, we can use the `useState` hook to create a state store that either returns the value from the localStorage or the default value. We can then use the `useEffect` hook to update the localStorage item when the state changes:
 
-```tsx
+```tsx withLineNumbers
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 type PersistedState<T> = [T, Dispatch<SetStateAction<T>>];
@@ -46,7 +46,7 @@ The usePersistedState hook works like a regular `useState` hook, except it persi
 
 You might notice the typescript cast in the return call (`JSON.parse(value) as T`), which can lead to potential schema issues. Let's take this example:
 
-```tsx
+```tsx withLineNumbers
 import React from 'react';
 import { usePersistedState } from '.';
 

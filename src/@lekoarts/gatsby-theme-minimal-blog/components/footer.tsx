@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Link } from 'gatsby';
 import { jsx, Themed } from 'theme-ui';
-import useSiteMetadata from '../../../../node_modules/@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata';
+import useSiteMetadata from '@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-site-metadata';
 
 const Footer = () => {
   const { siteTitle } = useSiteMetadata();
@@ -23,9 +23,7 @@ const Footer = () => {
         &copy; {new Date().getFullYear()} by {siteTitle}. All rights reserved.
       </div>
       <div>
-        <Link to="/imprint">
-          <Themed.a>Imprint</Themed.a>
-        </Link>
+        <Link to="/imprint">Imprint </Link>
       </div>
     </footer>
   );
