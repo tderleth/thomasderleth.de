@@ -22,7 +22,7 @@
     "@theme-ui/color": "^0.15.5",
     "@theme-ui/presets": "^0.15.5",
     "@types/theme-ui": "^0.3.7",
-    "gatsby": "^5.7.0",
+    "gatsby": "^5.8.1",
     "gatsby-cli": "^5.5.0",
     "gatsby-plugin-google-analytics": "^5.8.0",
     "gatsby-plugin-manifest": "^5.3.1",
