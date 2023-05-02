@@ -25,7 +25,7 @@
     "gatsby": "^5.8.1",
     "gatsby-cli": "^5.5.0",
     "gatsby-plugin-google-analytics": "^5.8.0",
-    "gatsby-plugin-manifest": "^5.8.0",
+    "gatsby-plugin-manifest": "^5.9.0",
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-offline": "^6.8.0",
     "gatsby-plugin-sitemap": "^6.8.0",
