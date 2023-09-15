@@ -1,0 +1,60 @@
+---
+title: 'Function Currying in JavaScript'
+description: 'Currying is a concept from lambda calculus, but do not let that lose your mind — it is quite simple to understand & implement.'
+date: 2023-09-15
+tags:
+  - Javascript
+  - Functional Programming
+---
+
+Currying is a functional programming technique that allows us to transform functions with multiple arguments `f(a, b, c)` into a series of functions with single arguments `f(a)(b)(c)`, creating a chain of nested function calls. In JavaScript, currying is a powerful tool for creating more flexible and reusable code. In this article, we'll explore the concept of currying, its benefits, and how to implement it in JavaScript.
+
+## What is Currying?
+
+At its core, currying involves breaking down a multi-argument function into a sequence of single-argument functions. This transformation enables us to call the function with one argument at a time or all at once, depending on our needs.
+
+### An Example
+
+Let's start with a simple example of a two-argument function that adds two numbers:
+
+```js
+const add = (a, b) => a + b;
+const result = add(1, 2);
+console.log(result); // 3
+```
+
+Now, let's create a curried version of this function and see how to use it:
+
+```js
+const addCurried = (a) => (b) => a + b;
+const result = addCurried(1)(2);
+console.log(result); // 3
+```
+
+In the curried version, `addCurried(1)` returns another function definition that takes an argument `b` and knows the value of `a`. When we call this inner function with `2`, it returns the actual result of adding `1` and `2`. You can also call these curried functions step by step, as shown below:
+
+```js
+const addCurried = (a) => (b) => a + b;
+const fn = addCurried(1);
+const result = fn(2);
+console.log(result); // 3
+```
+
+This chaining of functions allows for more flexible usage, and it's not limited to just two functions; you can chain as many as needed, such as `addCurried(1)(2)(3)`.
+
+## Closures in Currying
+
+One important concept to understand in currying is closures. In JavaScript, a closure is the combination of a function bundled together with references to its surrounding state. This means that even after a function has returned, its variables can still be accessed by inner functions. In our example, `fn` has access to the variable `a` defined in the outer function `addCurried`. This is how `fn` can perform the addition using variables from `a` function that has already exited.
+
+## Partial Application vs. Currying
+
+Sometimes, the terms "partial application" and "currying" are used interchangeably, but they represent different concepts:
+
+- _Currying_: In currying, a function is transformed into a series of unary functions (functions that take only one argument). Each function in the chain returns another unary function until all the arguments are consumed and the final result is returned.
+- _Partial Application_: Partial application involves fixing a specific number of arguments of a function and creating a new function with fewer arguments. This new function can then be called with the remaining arguments at a later time.
+
+## The Origin of Currying
+
+The concept of currying is named after the American mathematician Haskell Curry, who made significant contributions to combinatory and mathematical logic. Curry's work laid the foundation for functional programming languages like Haskell, which use currying extensively.
+
+In summary, currying is a powerful technique in functional programming that allows us to create more flexible and reusable functions by transforming multi-argument functions into a series of single-argument functions. Understanding closures is essential when working with curried functions, as they enable inner functions to access the variables of outer functions. So the next time you find yourself working with complex multi-argument functions in JavaScript, consider currying as a technique to simplify your code and make it more functional.
