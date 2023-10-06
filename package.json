@@ -18,7 +18,7 @@
     "test": "npm run lint"
   },
   "dependencies": {
-    "@lekoarts/gatsby-theme-minimal-blog": "6.1.2",
+    "@lekoarts/gatsby-theme-minimal-blog": "6.2.1",
     "@theme-ui/color": "^0.16.1",
     "@theme-ui/presets": "^0.16.1",
     "@types/theme-ui": "^0.3.7",
