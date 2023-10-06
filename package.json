@@ -20,7 +20,7 @@
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "6.1.2",
     "@theme-ui/color": "^0.16.0",
-    "@theme-ui/presets": "^0.16.0",
+    "@theme-ui/presets": "^0.16.1",
     "@types/theme-ui": "^0.3.7",
     "gatsby": "^5.12.3",
     "gatsby-cli": "^5.12.1",
