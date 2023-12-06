@@ -1,8 +1,6 @@
-require('dotenv').config({
-  path: '.env',
-});
+import type { GatsbyConfig } from 'gatsby';
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     author: '@tderleth',
     siteDescription:
@@ -39,3 +37,5 @@ module.exports = {
     'gatsby-plugin-theme-ui',
   ],
 };
+
+export default config;

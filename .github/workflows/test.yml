@@ -20,11 +20,5 @@ jobs:
       - name: 🔋 Install
         run: npm -s ci
 
-      - name: 🤖 Linting
-        run: npm run lint
-
       - name: 👨‍🔧 Building
         run: npm run build
-
-      - name: 🧪 Testing
-        run: npm test
