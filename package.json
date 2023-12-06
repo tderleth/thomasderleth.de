@@ -15,7 +15,8 @@
     "lint": "eslint",
     "pre-commit": "pretty-quick --staged",
     "serve": "gatsby serve",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "6.2.1",
