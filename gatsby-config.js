@@ -26,7 +26,6 @@ module.exports = {
           { name: 'CV', url: '/files/curriculum-vitae.pdf' },
           { name: 'GitHub', url: 'https://github.com/tderleth' },
           { name: 'LinkedIn', url: 'https://www.linkedin.com/in/thomasderleth' },
-          { name: 'Twitter', url: 'https://twitter.com/GtzBer' },
         ],
       },
     },
