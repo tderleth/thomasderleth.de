@@ -8,7 +8,7 @@ tags:
 
 Nowadays, I use React function components and the hooks API a lot. One common use case that naturally arises is to keep React state and local storage in sync. Though we're building client-side applications, we still want them to work when the user refreshes the page or comes back to the application after some time.
 
-This is where the localStorage comes in that lets us store some React state and re-hydrate it into our application on page load. To avoid repeating ourselves with localStorage code, we can create a custom hook that lets us use localStorage as a React state store. The respective interface should look the same as a regular react  `useState` hook, a tuple of the current state, and a dispatch function that lets us update the state.
+This is where the localStorage comes in that lets us store some React state and re-hydrate it into our application on page load. To avoid repeating ourselves with localStorage code, we can create a custom hook that lets us use localStorage as a React state store. The respective interface should look the same as a regular react `useState` hook, a tuple of the current state, and a dispatch function that lets us update the state.
 
 ```tsx withLineNumbers
 import { Dispatch, SetStateAction } from 'react';
@@ -51,7 +51,7 @@ import React from 'react';
 import { usePersistedState } from '.';
 
 interface User {
-  name: string
+  name: string;
 }
 
 const App = () => {
@@ -79,31 +79,31 @@ interface User {
 The item we stored in a user's localStorage and our React state don't follow the same schema anymore. There might be users out there that have an outdated item in their localStorage persisted. This will very likely lead to a runtime error at least to unintended behavior. One way to avoid this is to use some runtime-type system like io-ts to validate schema correctness. The following example shows how to use io-ts to validate our new schema:
 
 ```tsx
-import * as t from 'io-ts'
+import * as t from 'io-ts';
 import React from 'react';
 import { usePersistedState } from '.';
-import { isRight } from 'fp-ts/lib/Either'
+import { isRight } from 'fp-ts/lib/Either';
 
 const tUser = t.type({
   firstname: t.string,
-  lastname: t.string
-})
+  lastname: t.string,
+});
 
-type User = t.TypeOf<typeof tUser>
+type User = t.TypeOf<typeof tUser>;
 
 const App = () => {
   const [user] = usePersistedState<User>({ firstname: 'John', lastname: 'Doe' }, 'user');
 
   return isRight(tUser.decode(user)) ? (
-      <div>
-        <p>{user.name}</p>
-      </div>
-    ) : (
-      <div>
-        <p>Invalid user schema</p>
-      </div>
-    );
-  }
+    <div>
+      <p>{user.name}</p>
+    </div>
+  ) : (
+    <div>
+      <p>Invalid user schema</p>
+    </div>
+  );
+};
 
 export { App };
 ```

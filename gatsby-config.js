@@ -6,12 +6,12 @@ module.exports = {
   siteMetadata: {
     author: '@tderleth',
     siteDescription:
-      "Hello, I'm Thomas Derleth. I like to read, hear, talk, think and write about code as well as life and how to improve it.",
+      "Hello, I'm Thomas Derleth. I like to read, hear, talk, think and write about code and how to improve it.",
     siteHeadline: 'Thomas Derleth',
     siteImage: '/banner.jpg',
     siteLanguage: 'en',
     siteTitle: 'Thomas Derleth',
-    siteTitleAlt: 'thomas derleth | software engineer',
+    siteTitleAlt: 'thomas derleth | software engineer',
     siteUrl: 'https://thomasderleth.de',
   },
   plugins: [
@@ -34,23 +34,6 @@ module.exports = {
       options: { trackingId: 'UA-66897931-1' },
     },
     'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        background_color: '#fff',
-        description:
-          "Hello, I'm Thomas Derleth. I like to read, hear, talk, think and write about code as well as life and how to improve it",
-        display: 'standalone',
-        icons: [
-          { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
-        ],
-        name: 'thomasderleth.de',
-        short_name: 'thomasderleth.de',
-        start_url: '/',
-        theme_color: '#2ecc71',
-      },
-    },
     'gatsby-plugin-netlify',
     'gatsby-plugin-offline',
     'gatsby-plugin-theme-ui',

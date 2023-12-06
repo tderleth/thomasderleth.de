@@ -11,9 +11,9 @@
     "develop": "gatsby develop",
     "eslint:github-action": "eslint src/",
     "fix": "npm run lint -- --fix",
-    "format": "prettier --write '**/*.{css,html,js,jsx,json,md,ts,tsx}'",
+    "format": "prettier --write .",
     "lint": "eslint",
-    "pre-commit":"pretty-quick --staged",
+    "pre-commit": "pretty-quick --staged",
     "serve": "gatsby serve",
     "test": "npm run lint"
   },
