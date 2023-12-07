@@ -1,0 +1,102 @@
+---
+title: 'Implementing Basic Authentication in Next.js: A Step-by-Step Guide'
+description: 'This guide walks through setting up Basic Authentication in a Next.js application using middleware functionality, enhancing security by verifying user credentials.'
+date: 2023-12-07
+tags:
+  - Next.js
+  - Basic Authentication
+---
+
+## Introduction
+Security is a vital aspect of web applications, especially when handling sensitive data or restricting access to certain areas. One method to enhance security is [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). In this guide, we'll walk through setting up Basic Authentication in a Next.js application, ensuring secure access to designated routes.
+
+## Prerequisites
+Before diving into the implementation, ensure you have a basic understanding of [Next.js](https://nextjs.org/) and [Node.js](https://nodejs.org/en) as well as [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
+
+## How-to
+
+Before we dive in, this tutorial focuses on implementing Basic Authentication within a Next.js application that utilizes [middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware) functionality. Note that this functionality isn't applicable in static exports. For further details, refer to [this](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#unsupported-features) resource.
+
+### 1. Setup Middleware
+
+Add a file called `middleware.ts` at the root of your project, with the following content (we'll walk trhough it in a second):
+
+```ts
+// Importing NextResponse utility from Next.js
+import { NextResponse } from "next/server";
+
+// Importing NextRequest type from Next.js
+import type { NextRequest } from "next/server";
+
+// Defining a User type
+type User = { username: string; password: string };
+
+// Creating a simulated user database
+const users: User[] = [{ username: "user", password: "password" }];
+
+// Helper function to find a user by username
+const findUserByUsername = (username: string): User | undefined => {
+  return users.find((user) => user.username === username);
+};
+
+// Middleware function that handles Basic Authentication
+export function middleware(req: NextRequest) {
+  // Getting the 'authorization' header from the request
+  const basicAuth = req.headers.get("authorization");
+
+  // Getting the URL of the request
+  const url = req.nextUrl;
+
+  if (basicAuth) {
+    // Extracting the value after 'Basic '
+    const authValue = basicAuth.split(" ")[1];
+
+    // Decoding the Base64-encoded credentials
+    const [username, pwd] = atob(authValue).split(":");
+
+    // Finding the user in the simulated database
+    const user = findUserByUsername(username);
+
+    if (user && pwd === user.password) {
+      // Allowing the request to continue if credentials match
+      return NextResponse.next();
+    }
+  }
+
+  // Redirecting to an authentication endpoint if credentials are invalid or missing
+  url.pathname = "/api/auth";
+
+  // Redirecting the request
+  return NextResponse.rewrite(url);
+}
+```
+
+### 2. Setup authentication endpoint
+
+Create a file `pages/api/auth.ts` with the following content:
+
+```ts
+// Importing necessary types from Next.js
+import type { NextApiRequest, NextApiResponse } from "next";
+
+// Default handler function for the API route
+export default function handler(_: NextApiRequest, res: NextApiResponse) {
+  // Setting the 'WWW-authenticate' header to prompt Basic Authentication
+  res.setHeader("WWW-authenticate", 'Basic realm="Secure Area"');
+
+  // Setting the HTTP status code to 401 (Unauthorized)
+  res.statusCode = 401;
+
+  // Sending a response indicating authentication is required
+  res.end(`Auth Required.`);
+}
+```
+
+Great, but how does that work in detail now? Next.js [rewrites](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) serve as a URL proxy, mapping incoming requests to different paths without revealing the actual destination to the client. When a user hits a route, like `/foo`, the request traverses our middleware. Initially lacking authentication, Next.js proxies it to `api/auth`, prompting a basic authentication modal to the user. After authentication, subsequent requests include those credentials in an `authorization` header. The middleware verifies these. If correct, it allows routing (`next()`). Incorrect credentials trigger a rewrite, presenting the authentication modal again. This process ensures authenticated access while masking destination paths for a seamless user experience.
+
+## Conclusion
+By implementing Basic Authentication in a Next.js application, you add an extra layer of security to your routes. However, for production-level applications, consider more advanced authentication methods like JWT for enhanced security. Remember to utilize HTTPS to encrypt traffic and safeguard usernames and passwords transmitted during Basic Authentication. By following these steps, you can securely implement Basic Authentication in your Next.js project, controlling access to designated areas while maintaining robust security measures.
+
+## Example
+
+Find an example repository [here](https://github.com/tderleth/vigilant-octo-doodle).
