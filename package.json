@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "6.2.3",
-    "@theme-ui/color": "^0.16.1",
+    "@theme-ui/color": "^0.16.2",
     "@theme-ui/presets": "^0.16.2",
     "gatsby": "^5.13.3",
     "gatsby-cli": "^5.13.2",
