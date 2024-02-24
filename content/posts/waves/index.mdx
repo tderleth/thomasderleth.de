@@ -1,0 +1,163 @@
+---
+title: 'Creating Audio Visualization with JavaScript: A Step-by-Step Guide'
+description: 'This blog post guides you through creating an audio visualization using JavaScript and SVG elements.'
+date: 2024-02-24
+tags:
+  - Audio Visualisation
+  - Web Audio API
+---
+
+# Creating Audio Visualization with JavaScript: A Step-by-Step Guide
+
+In this tutorial, we'll explore how to create a [simple audio visualization](https://tderleth.github.io/waves/pages/) using JavaScript. We'll leverage the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) to access audio input from the user's microphone and visualize it in real-time using SVG (Scalable Vector Graphics) paths.
+
+## Prerequisites
+
+Before we begin, make sure you have a basic understanding of HTML, CSS, and JavaScript.
+
+## Setting up the HTML
+
+First, let's set up the HTML structure for our audio visualization.
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <!-- Include your JavaScript file -->
+    <script type="text/javascript" src="./script.js"></script>
+    <!-- Include your CSS file -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- SVG element for visualization -->
+    <svg preserveAspectRatio="none" version="1.1" viewBox="0 0 255 255">
+      <!-- Define mask and gradient -->
+      <defs>
+        <mask id="mask" />
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop stop-color="#fff" stopOpacity="1" />
+        </linearGradient>
+      </defs>
+      <!-- Rectangle to fill SVG canvas with gradient and apply mask -->
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
+    </svg>
+  </body>
+</html>
+```
+
+The `<script>` tag includes your JavaScript file (`script.js`) for handling the audio visualization. The `<link>` tag includes your CSS file (`style.css`) for styling the HTML elements. Inside the `<body>` tag, there's an SVG element used for rendering the audio visualization. The `<defs>` section defines the mask and gradient used in the SVG. The `<rect>` element fills the SVG canvas with the gradient and applies the mask.
+
+## Creating the JavaScript Code
+
+Now, let's dive into the JavaScript code to handle audio input and generate the visualization.
+
+```javascript
+// Create an array of SVG path strings, each defining a line starting from a specific point on the SVG canvas
+const PATH_ARRAY = Array.from({ length: 255 }, (_, index) => `M ${index},255 l 0,-0`);
+
+// Function to handle successful audio access
+const handleAudioStream = (audioStream) => {
+  // Create an AudioContext to manage audio operations
+  const audioContext = new AudioContext();
+
+  // Create an AnalyserNode to extract frequency data from the audio stream
+  const analyser = audioContext.createAnalyser();
+
+  // Create a source node from the audio stream
+  const source = audioContext.createMediaStreamSource(audioStream);
+
+  // Connect the source to the analyser
+  source.connect(analyser);
+
+  // Set the FFT (Fast Fourier Transform) size for frequency analysis
+  analyser.fftSize = 1024;
+
+  // Create a Uint8Array to store frequency data
+  const frequencyArray = new Uint8Array(analyser.frequencyBinCount);
+
+  // Function to continuously update the visual representation of audio frequencies
+  const updateVisualization = () => {
+    // Find the container in the HTML document where the SVG visualization will be rendered
+    const container = document.querySelector('#mask');
+
+    // Clear the container for new visualizations
+    container.innerHTML = '';
+
+    // Request animation frame for smooth updates
+    requestAnimationFrame(updateVisualization);
+
+    // Get frequency data into the frequencyArray
+    analyser.getByteFrequencyData(frequencyArray);
+
+    // Map the PATH_ARRAY with frequency data to create SVG path elements
+    PATH_ARRAY.forEach((path, index) => {
+      // Calculate the new length of the SVG path based on frequency data
+      const newLength = Math.floor(frequencyArray[index]) - (Math.floor(frequencyArray[index]) % 5);
+
+      // Create an SVG path element
+      const element = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+      // Set attributes for the SVG path
+      element.setAttribute('d', `M ${index},255 l 0,-${newLength / 5}`);
+
+      // Append the SVG path to the container
+      container.appendChild(element);
+    });
+  };
+
+  // Start the continuous visualization
+  updateVisualization();
+};
+
+// Function to handle errors if audio access fails
+const handleAudioError = (error) => {
+  alert(error);
+};
+
+// Main function to initiate audio stream access
+const initializeAudioVisualization = () => {
+  // Try to access the user's audio input
+  navigator.getUserMedia({ audio: true, video: false }, handleAudioStream, handleAudioError);
+};
+
+// Call the main function to begin the audio stream access
+initializeAudioVisualization();
+```
+
+This JavaScript code sets up an audio visualization by accessing the user's microphone input and continuously updating the SVG paths based on the audio frequency data.
+
+## Styling with CSS
+
+To enhance the visual appeal of our audio visualization, let's add some CSS styles.
+
+```css
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+}
+
+path {
+  stroke: #f0d339;
+  stroke-width: 0.5;
+}
+```
+
+## Conclusion
+
+As you can see creating an audio visualization using JavaScript, leveraging the Web Audio API and SVG is fairly easy. You can further customize the visualization by experimenting with different SVG path styles and audio processing techniques.
+
+Happy coding!
