@@ -3,4 +3,4 @@ User-agent: *
 Disallow: /files/*.pdf$
 Disallow: /files/*/*.pdf$
 
-sitemap: https://thomasderleth.de/sitemap.xml
+sitemap: https://thomasderleth.de/sitemap-index.xml
