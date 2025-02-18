@@ -1,5 +1,5 @@
 User-agent: *
 
-Disallow: /static/*.pdf
+Disallow: /files/*.pdf
 
 sitemap: https://thomasderleth.de/sitemap.xml
