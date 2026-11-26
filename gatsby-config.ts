@@ -1,6 +1,12 @@
 import type { GatsbyConfig } from 'gatsby';
+import netlifyAdapter from 'gatsby-adapter-netlify';
+
+const netlify = netlifyAdapter();
 
 const config: GatsbyConfig = {
+  // Netlify's adapter restores its own cache after `gatsby clean`, potentially
+  // resurrecting plugin state from an earlier deploy.
+  ...(process.env.NETLIFY ? { adapter: { ...netlify, cache: undefined } } : {}),
   siteMetadata: {
     author: '@tderleth',
     siteDescription:
