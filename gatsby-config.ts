@@ -27,10 +27,6 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: { trackingId: 'UA-66897931-1' },
-    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify',
     'gatsby-plugin-offline',
