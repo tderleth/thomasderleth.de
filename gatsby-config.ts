@@ -10,12 +10,12 @@ const config: GatsbyConfig = {
   siteMetadata: {
     author: '@tderleth',
     siteDescription:
-      "Hello, I'm Thomas Derleth. I like to read, hear, talk, think and write about code and how to improve it.",
+      'Thomas Derleth is an Engineering Lead building software for urban mobility, with a focus on product-centric engineering.',
     siteHeadline: 'Thomas Derleth',
     siteImage: '/banner.jpg',
     siteLanguage: 'en',
     siteTitle: 'Thomas Derleth',
-    siteTitleAlt: 'thomas derleth | software engineer',
+    siteTitleAlt: 'Thomas Derleth | Engineering Lead',
     siteUrl: 'https://thomasderleth.de',
   },
   plugins: [
