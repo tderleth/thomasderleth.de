@@ -27,6 +27,15 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-gdpr-cookies',
+      options: {
+        googleAnalytics: {
+          trackingId: 'G-HB3YBV9E0T',
+          allowAdFeatures: false,
+        },
+      },
+    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify',
     'gatsby-plugin-offline',
