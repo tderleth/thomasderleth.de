@@ -1,6 +1,12 @@
 import type { GatsbyConfig } from 'gatsby';
+import netlifyAdapter from 'gatsby-adapter-netlify';
+
+const netlify = netlifyAdapter();
 
 const config: GatsbyConfig = {
+  // Netlify's adapter restores its own cache after `gatsby clean`, potentially
+  // resurrecting plugin state from an earlier deploy.
+  ...(process.env.NETLIFY ? { adapter: { ...netlify, cache: undefined } } : {}),
   siteMetadata: {
     author: '@tderleth',
     siteDescription:
@@ -28,8 +34,13 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: { trackingId: 'UA-66897931-1' },
+      resolve: 'gatsby-plugin-gdpr-cookies',
+      options: {
+        googleAnalytics: {
+          trackingId: 'G-HB3YBV9E0T',
+          allowAdFeatures: false,
+        },
+      },
     },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify',
