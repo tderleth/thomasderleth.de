@@ -7,7 +7,6 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "deploy": "npm run clean && npm run build",
     "dev": "gatsby develop",
     "format": "prettier --write .",
     "pre-commit": "pretty-quick --staged",

@@ -1,2 +1,2 @@
 [build]
-  command = "npm run deploy"
+  command = "npm run clean && npm run build"
